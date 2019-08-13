@@ -354,8 +354,12 @@ export class Titlebar extends Themebar {
 	private onDidChangeFullscreen(fullscreen: boolean) {
 		if (!isMacintosh) {
 			if (fullscreen) {
-				hide(this.appIcon, this.title, this.windowControls);
+				hide(this.titlebar);
+				this.container.style.top = '0px';
+				//hide(this.appIcon, this.title, this.windowControls);
 			} else {
+				show(this.titlebar);
+				this.container.style.top = `${this.titlebar.getBoundingClientRect().bottom}px`;
 				show(this.appIcon, this.title, this.windowControls);
 			}
 		}
